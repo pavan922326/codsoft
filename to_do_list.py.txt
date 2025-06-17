@@ -1,0 +1,59 @@
+import time
+class to_do_list:
+    d1={}
+    l1=[]
+    def __init__(self):
+        self.display()
+        self.choice=int(input("Enter Your Choice 1/2/3/4/5 : "))
+        while self.choice>=1 and self.choice<5:
+            if self.choice==1:
+                self.View_task()
+            elif self.choice==2:
+                self.Add_task()
+            elif self.choice==3:
+                self.task_comp()
+            elif self.choice==4:
+                self.delete_task()
+            self.display()
+            self.choice=int(input("Enter Your Choice 1/2/3/4/5 : "))
+    def display(self):
+        print("1.View Tasks in the List.")
+        print("2.Add Task to the List.")
+        print("3.Make task is Completed.")
+        print("4.Delete Task from the List.")
+        print("5.Exit. ")
+        print()
+    def View_task(self):
+        a=1
+        if to_do_list.l1:
+            for i,j in to_do_list.d1.items():
+                print(a,i,j,sep="  ")
+                a+=1
+        else:
+            print("List is Empty...")
+        print()
+    def Add_task(self):
+        task=input("Enter The Task: ")
+        to_do_list.d1[task]=0
+        to_do_list.l1.append(task)
+        print("Task added Sucessfully..")
+        print()
+    def task_comp(self):
+        self.View_task()
+        task=int(input("Enter which task to complete: "))
+        a1=to_do_list.l1[task-1]
+        to_do_list.d1[a1]=1
+        print(f"{a1} is completed..")
+        print()
+    def delete_task(self):
+        self.View_task()
+        task=int(input("Enter which task to delete: "))
+        a1=to_do_list.l1[task-1]
+        to_do_list.d1.pop(a1)
+        to_do_list.l1.remove(a1)
+        print(f"{a1} is deleted sucessfully...")
+        print()
+
+t1=to_do_list()
+time.sleep(3)
+print("End of an application.")
